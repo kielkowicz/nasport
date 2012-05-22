@@ -1,4 +1,6 @@
 Nasport::Application.routes.draw do
+  get "private/index"
+
   devise_for :users
 
   # The priority is based upon order of creation:
