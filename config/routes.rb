@@ -1,4 +1,6 @@
 Nasport::Application.routes.draw do
+  resources :places
+
   get "private/index"
 
   devise_for :users
