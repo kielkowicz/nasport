@@ -1,4 +1,6 @@
 Nasport::Application.routes.draw do
+  resources :disciplines
+
   resources :places
 
   get "private/index"

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @discipline.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @discipline.description %>
+</p>
+
+<p>
+  <b>Rules:</b>
+  <%= @discipline.rules %>
+</p>
+
+
+<%= link_to 'Edit', edit_discipline_path(@discipline) %> |
+<%= link_to 'Back', disciplines_path %>
