@@ -1,9 +1,15 @@
 Nasport::Application.routes.draw do
   resources :disciplines
-
+  resources :events do
+    member do
+      get 'join'
+      get 'resign'
+    end
+  end
+  
   resources :places
 
-  get "private/index"
+  # get "private/index"
 
   devise_for :users
 

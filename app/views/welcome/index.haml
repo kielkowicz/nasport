@@ -1,2 +1,11 @@
 %h1 Witaj na stronie nasport.pl!
 
+%h2 Ostatnio dodane eventy:
+
+%table
+  - @events.each do |event|
+    %tr
+      %td= link_to event.name, event_path(event)
+      %td= event.place.name unless event.place.nil?
+      %td= event.users.include?(current_user) ? link_to('Zrezygnuj', resign_event_path(event.id)) : link_to('Dołącz!', join_event_path(event.id))
+

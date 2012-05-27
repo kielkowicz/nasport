@@ -1,7 +1,13 @@
-%div{:class=>'pull right'}
+%div
+  - if current_user
+    = link_to 'Dashboard', root_path
+    |
+    = link_to 'Add event' , new_event_path
+
   - if current_user && current_user.admin?
     = link_to 'Edit places', places_path
     |
     = link_to 'Edit disciplines', disciplines_path
+
   |
   = current_user ? link_to('logout', destroy_user_session_path, :method => :delete) : link_to('login', new_user_session_path)

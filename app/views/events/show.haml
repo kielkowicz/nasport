@@ -1,0 +1,11 @@
+%h1= "#{@event.name}"
+%h3= "#{@event.place.address}" unless @event.place.nil?
+
+%div
+  %p Zarejestrowani użytkownicy
+  %p
+    %table
+      - @event_users.each do |event_user|
+        %tr
+          %td= event_user.email
+  

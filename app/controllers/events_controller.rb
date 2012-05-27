@@ -1,0 +1,48 @@
+class EventsController < ApplicationController
+  def new
+    @event = current_user.events.build
+    @places = Place.all #.map { |place| [place.id, place.name] }
+  end
+  
+  def create 
+    if Event.create! params[:event]
+      flash[:notice] = 'Event was created!'
+    else
+      flash[:notice] = 'Even\'t wasn\'t created!'
+    end
+    
+    redirect_to root_path
+  end
+  
+  def show
+    @event = Event.find(params[:id])
+    @event_users = @event.users
+  end
+  
+  def join
+    event = Event.find(params[:id])
+    @is_user_taking_part = event.users.include? current_user
+    
+    unless @is_user_taking_part
+      if event.users << current_user then
+        flash[:notice] = "Dołączyłeś do #{event.name}!"
+      else
+        flash[:notice] = "Nie dołączyłeś do #{event.name} z powodów technicznych!"
+      end
+    else
+      flash[:notice] = "Już dołączyłeś do tego eventu!"
+    end
+    
+    redirect_to root_path
+  end
+  
+  def resign
+    if Event.find(params[:id]).users.delete(current_user) 
+      flash[:notice] = "Zostałeś wypisany z eventu!"
+    else
+      flash[:notice] = "Nie zstałeś wypisany z eventu!"
+    end
+    
+    redirect_to root_path
+  end
+end
