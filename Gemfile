@@ -10,6 +10,7 @@ gem 'sqlite3'
 gem 'json'
 gem 'haml'
 gem 'devise'
+gem 'annotate'
 
 # Gems used only for assets and not required
 # in production environments by default.
