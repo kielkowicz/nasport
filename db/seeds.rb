@@ -8,6 +8,8 @@
 puts 'Cleaning database...'
 User.delete_all
 Place.delete_all
+Event.delete_all
+Report.delete_all
 
 puts 'Populating database with fake data...'
 
@@ -18,3 +20,6 @@ Place.create! :name=>'Park jordana', :address=>'reymonta', :closed=>false
 Place.create! :name=>'Basen agh', :address=>'przy agh', :closed=>true
 Place.create! :name=>'sala gimastyczna, szkola nr 12', :address=>'gdzies', :closed=>false
 
+Event.create! :name => "Let's play some football!", :place_id => Place.first.id, :owner_id => User.first.id, :date=>Time.new+10.days
+Event.create! :name => "Let's play some tenis!", :place_id => Place.last.id, :owner_id => User.last.id, :date=>Time.new+20.days
+Event.create! :name => "Let's play some basketball!", :place_id => Place.last.id, :owner_id => User.last.id, :date=>Time.new+20.days

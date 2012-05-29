@@ -8,4 +8,5 @@
       - @event_users.each do |event_user|
         %tr
           %td= event_user.email
-  
+%div
+  = link_to 'Zgłoś nadużycie', event_reports_path(@event), :method => :post

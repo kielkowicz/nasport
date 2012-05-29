@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   end
   
   def create 
-    if Event.create! params[:event]
+    if Event.create! params[:event].merge({:owner_id=>current_user.id})
       flash[:notice] = 'Event was created!'
     else
       flash[:notice] = 'Even\'t wasn\'t created!'
@@ -44,5 +44,17 @@ class EventsController < ApplicationController
     end
     
     redirect_to root_path
+  end
+  
+  def destroy
+    begin
+      if (Event.find(params[:id]).destroy) then
+        flash[:notice] = 'Event został usunięty!'
+      end
+    rescue
+      flash[:notice] = 'Był jakiś blłąd podczas usuwania => nic nie zostało usinięte.'
+    end
+    
+    redirect_to reports_path
   end
 end

@@ -1,16 +1,17 @@
 Nasport::Application.routes.draw do
   resources :disciplines
+  
   resources :events do
     member do
       get 'join'
       get 'resign'
     end
+    resources :reports
   end
   
+  get 'reports' => 'reports#all'
+  
   resources :places
-
-  # get "private/index"
-
   devise_for :users
 
   # The priority is based upon order of creation:
