@@ -10,7 +10,7 @@ gem 'sqlite3'
 gem 'json'
 gem 'haml'
 gem 'devise'
-gem 'annotate'
+gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 
 # Gems used only for assets and not required
 # in production environments by default.
