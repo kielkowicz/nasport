@@ -1,0 +1,16 @@
+%h1 Moje eventy!
+
+%p Utworzone przezemnie:
+%table
+  - @mine_events[:owner].each do |event|
+    %tr
+      %td= link_to event.name, event_path(event)
+
+%p w których biorę udział
+
+%table  
+  - @mine_events[:participant].each do |event|
+    %tr
+      %td= link_to event.name, event_path(event)
+
+    

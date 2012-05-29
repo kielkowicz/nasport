@@ -46,6 +46,10 @@ class EventsController < ApplicationController
     redirect_to root_path
   end
   
+  def mine
+    @mine_events={:owner => Event.where(['owner_id = ?', current_user.id]), :participant => current_user.events} 
+  end
+  
   def destroy
     begin
       if (Event.find(params[:id]).destroy) then

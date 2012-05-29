@@ -5,6 +5,7 @@ Nasport::Application.routes.draw do
     member do
       get 'join'
       get 'resign'
+      get 'mine'
     end
     resources :reports
   end
