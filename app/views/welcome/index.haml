@@ -8,5 +8,4 @@
       %td= link_to event.name, event_path(event)
       %td= event.place.name unless event.place.nil?
       %td= event.owner.email
-      %td= event.users.include?(current_user) ? link_to('Zrezygnuj', resign_event_path(event.id)) : link_to('Dołącz!', join_event_path(event.id))
-
+      %td= join_or_resign_from_event_link(current_user, event)

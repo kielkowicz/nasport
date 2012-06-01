@@ -4,6 +4,8 @@
     |
     = link_to 'Add event' , new_event_path
     |
+    = link_to 'Look for event' , '#'
+    |
     = link_to 'My events' , mine_event_path(current_user)
 
   - if current_user && current_user.admin?

@@ -1,8 +1,12 @@
-%h1= "#{@event.name}"
+%h1 
+  = "#{@event.name}"
+  |
+  = join_or_resign_from_event_link(current_user, @event)
+
 %h3= "#{@event.place.address}" unless @event.place.nil?
 
 %div
-  %p Zarejestrowani użytkownicy
+  %p= "Zarejestrowani użytkownicy na event" unless @event.users.empty?
   %p
     %table
       - @event_users.each do |event_user|
