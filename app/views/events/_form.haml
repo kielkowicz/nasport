@@ -4,7 +4,7 @@
     = f.text_field :name
   %p
     = f.label :event_day, 'Event day: '
-    = f.text_field :event_day, :class=>'event_datetime_picker', :value=>@event.new_record? ? '' : "#{@event.event_day.day}/#{@event.event_day.month}/#{@event.event_day.year} #{@event.event_day.time.hour <10 ? "0#{@event.event_day.time.hour}": "#{@event.event_day.time.hour}"}:#{@event.event_day.time.min < 10 ? "0#{@event.event_day.time.min}" : "#{@event.event_day.time.min}" }" 
+    = f.text_field :event_day, :class=>'event_datetime_picker', :value=>@event.new_record? ? '' : "#{@event.event_day.month}/#{@event.event_day.day}/#{@event.event_day.year} #{@event.event_day.time.hour <10 ? "0#{@event.event_day.time.hour}": "#{@event.event_day.time.hour}"}:#{@event.event_day.time.min < 10 ? "0#{@event.event_day.time.min}" : "#{@event.event_day.time.min}" }" 
   %p
     = f.label :duration, 'Event duration: '
     = f.text_field :duration
