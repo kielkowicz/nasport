@@ -1,15 +1,3 @@
 %h1 Add event
-= form_for @event do |f|
-  %p
-    = f.label :name, 'Name of event: '
-    = f.text_field :name
-  %p
-    = f.label :date, 'Event day: '
-    = f.date_select :date
-  %p
-    = f.label :place_id, 'Event place: '
-    = collection_select(:event, :place_id, @places, :id, :name)
-  
-  %p
-    = f.submit 'Create!'
-    
+= render 'form', :label => 'Create!'
+= render 'datetimepicker_js'

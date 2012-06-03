@@ -1,7 +1,10 @@
 %h1 
   = "#{@event.name}"
   |
-  = join_or_resign_from_event_link(current_user, @event)
+  - unless @event.is_owner? current_user
+    = join_or_resign_from_event_link(current_user, @event)
+  - else
+    = link_to 'Edit', edit_event_path(@event)
 
 %h3= "#{@event.place.address}" unless @event.place.nil?
 

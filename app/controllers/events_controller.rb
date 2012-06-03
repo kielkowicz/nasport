@@ -14,6 +14,27 @@ class EventsController < ApplicationController
     redirect_to root_path
   end
   
+  def edit
+    begin
+      @event = Event.find(params[:id])
+      @places = Place.all
+    rescue
+      redirect_to root_path
+    end
+  end
+  
+  def update
+    @event = Event.find(params[:id])
+
+    if (@event.update_attributes(params[:event]))
+        flash[:notice] = 'Event was updated!'
+    else
+        flash[:notice] = 'Event wasn\'t updated!'
+    end
+
+    redirect_to root_path
+  end
+  
   def show
     @event = Event.find(params[:id])
     @event_users = @event.users
