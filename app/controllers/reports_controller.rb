@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ReportsController < ApplicationController
   def all
     @reports = Report.all

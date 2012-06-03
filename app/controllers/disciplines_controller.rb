@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class DisciplinesController < ApplicationController
   # GET /disciplines
   # GET /disciplines.json

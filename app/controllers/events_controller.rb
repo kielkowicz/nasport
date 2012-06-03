@@ -1,3 +1,5 @@
+# encoding: UTF-8
+#
 class EventsController < ApplicationController
   def new
     @event = current_user.events.build

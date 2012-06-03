@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
