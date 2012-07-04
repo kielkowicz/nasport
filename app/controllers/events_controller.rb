@@ -7,13 +7,16 @@ class EventsController < ApplicationController
   end
   
   def create 
-    if Event.create! params[:event].merge({:owner_id=>current_user.id})
+    @event = Event.new params[:event].merge({:owner_id=>current_user.id})
+ 
+    if @event.save     
       flash[:notice] = 'Event was created!'
+      redirect_to root_path
     else
+      @places = Place.all
       flash[:notice] = 'Even\'t wasn\'t created!'
+      render :action => :new
     end
-    
-    redirect_to root_path
   end
   
   def edit
@@ -30,11 +33,11 @@ class EventsController < ApplicationController
 
     if (@event.update_attributes(params[:event]))
         flash[:notice] = 'Event was updated!'
+        redirect_to root_path
     else
         flash[:notice] = 'Event wasn\'t updated!'
+        render :action => :edit
     end
-
-    redirect_to root_path
   end
   
   def show
@@ -47,10 +50,14 @@ class EventsController < ApplicationController
     @is_user_taking_part = event.users.include? current_user
     
     unless @is_user_taking_part
-      if event.users << current_user then
-        flash[:notice] = "Dołączyłeś do #{event.name}!"
+      if event.max_users == event.users.count then
+        flash[:notice] = 'Już nie ma miejsc wolnych na ten event'
       else
-        flash[:notice] = "Nie dołączyłeś do #{event.name} z powodów technicznych!"
+        if event.users << current_user then
+          flash[:notice] = "Dołączyłeś do #{event.name}!"
+        else
+          flash[:notice] = "Nie dołączyłeś do #{event.name} z powodów technicznych!"
+        end
       end
     else
       flash[:notice] = "Już dołączyłeś do tego eventu!"

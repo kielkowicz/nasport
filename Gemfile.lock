@@ -49,6 +49,7 @@ GEM
       orm_adapter (~> 0.0.7)
       railties (~> 3.1)
       warden (~> 1.1.1)
+    dynamic_form (1.1.4)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -126,6 +127,7 @@ DEPENDENCIES
   annotate!
   coffee-rails (~> 3.2.1)
   devise
+  dynamic_form
   haml
   jquery-rails
   json

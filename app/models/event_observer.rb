@@ -5,4 +5,5 @@ class EventObserver < ActiveRecord::Observer
       Notifier.event_changed(user,event).deliver
     end
   end
+  
 end

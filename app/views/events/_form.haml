@@ -1,5 +1,7 @@
 = form_for @event do |f|
   %p
+    = f.error_messages
+  %p
     = f.label :name, 'Name of event: '
     = f.text_field :name
   %p
@@ -12,7 +14,9 @@
   %p
     = f.label :place_id, 'Event place: '
     = collection_select(:event, :place_id, @places, :id, :name)
-  
+  %p
+    = f.label :max_users, 'Max users for that event: '
+    = f.text_field :max_users
   %p
     = f.submit label
 
