@@ -2,15 +2,6 @@
 #
 # Table name: events
 #
-#  id         :integer         not null, primary key
-#  name       :string(255)
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
-#  place_id   :integer
-#  owner_id   :integer
-#  event_day  :datetime
-#  duration   :integer
-#  end_time   :datetime
 #  id          :integer         not null, primary key
 #  name        :string(255)
 #  created_at  :datetime        not null
@@ -35,6 +26,8 @@ class Event < ActiveRecord::Base
   has_many :reports, :dependent => :destroy
  
   before_save :prepare_event_end_time
+  
+  attr_accessible :name, :event_day, :end_time, :description, :place_id, :owner_id, :max_users, :duration
 
   def owner
     User.find(owner_id)

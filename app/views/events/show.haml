@@ -9,7 +9,10 @@
 %h3= "#{@event.place.address}" unless @event.place.nil?
 
 %div
-  %p= "Zarejestrowani użytkownicy na event" unless @event.users.empty?
+  %p
+    = @event.description
+  %p
+    = "Zarejestrowani użytkownicy na event" unless @event.users.empty?
   %p
     %table
       - @event_users.each do |event_user|
