@@ -13,7 +13,10 @@ Nasport::Application.routes.draw do
   get 'reports' => 'reports#all'
   
   resources :places
+  
   devise_for :users
+  
+  match '/users/:user_id/profile' => 'Profiles#show', :as => 'user_profile' # not really a RESTFul way...
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

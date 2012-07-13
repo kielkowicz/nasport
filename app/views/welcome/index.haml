@@ -7,5 +7,5 @@
     %tr
       %td= link_to event.name, event_path(event)
       %td= event.place.name unless event.place.nil?
-      %td= event.owner.nickname.nil? ? event.owner.email : event.owner.nickname
+      %td= event.owner.nickname.nil? ? link_to(event.owner.email, user_profile_path(event.owner)) : link_to(event.owner.nickname, user_profile_path(event.owner))
       %td= join_or_resign_from_event_link(current_user, event)
