@@ -12,9 +12,13 @@ Event.delete_all
 Report.delete_all
 
 puts 'Populating database with fake data...'
-User.create! :email =>'admin@example.com', :nickname => 'super admin', :password=>'123qwe', :password_confirmation=>'123qwe', :confirmed_at => Time.now, :role =>'admin'
-User.create! :email =>'user@example.com', :nickname => 'simple user', :password=>'123qwe', :password_confirmation=>'123qwe', :confirmed_at => Time.now, :role =>'user'
-User.create! :email =>'stupid@example.com', :nickname => 'stupid user!', :password=>'123qwe', :password_confirmation=>'123qwe', :confirmed_at =>Time.now, :role=>'user'
+
+User.create! :email =>'admin@example.com', :nickname => 'super admin', :password=>'123qwe', :password_confirmation=>'123qwe', 
+             :confirmed_at => Time.now, :role =>'admin'
+User.create! :email =>'user@example.com', :nickname => 'simple user', :password=>'123qwe', :password_confirmation=>'123qwe', 
+             :confirmed_at => Time.now, :role =>'user'
+User.create! :email =>'stupid@example.com', :nickname => 'stupid user!', :password=>'123qwe', :password_confirmation=>'123qwe', 
+             :confirmed_at =>Time.now, :role=>'user'
 
 Place.create! :name=>'Park jordana', :address=>'reymonta', :closed=>false
 Place.create! :name=>'Basen agh', :address=>'przy agh', :closed=>true

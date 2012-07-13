@@ -31,7 +31,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :confirmed_at, :role, :nickname
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :confirmed_at, 
+                  :nickname, :role #after deploy/development remove role from accessible list!
   
   validates :nickname, :presence => true 
   validates :nickname, :uniqueness => true
