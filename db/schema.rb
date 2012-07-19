@@ -47,12 +47,6 @@ ActiveRecord::Schema.define(:version => 20120713100934) do
     t.boolean  "closed",      :default => false
   end
 
-  create_table "profiles", :force => true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "reports", :force => true do |t|
     t.integer  "event_id"
     t.datetime "created_at", :null => false
