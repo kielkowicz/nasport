@@ -42,10 +42,12 @@ class Event < ActiveRecord::Base
   end
 
   def is_place_free_for_event
-    events = Event.where(['place_id=? and end_time>?', self.place_id, self.event_day])
+    events = Event.where(['place_id=? and event_day>?', self.place_id, Time.now-1.day])
+    
     events.each do |event_other|
-      if event_other.end_time > self.event_day then
-        errors.add(:event_day, 'Place has already been taken on that time!')
+      if (event_other.event_day..event_other.end_time+5.minute).overlaps?(self.event_day..self.event_day+self.duration.minute) then
+      errors.add(:event_day, 'overlaps with other event!')
+        break
       end
       
     end
