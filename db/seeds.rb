@@ -28,9 +28,9 @@ Event.create! :name => "Let's play some football!", :max_users => 10, :place_id 
               :event_day=>Time.new+10.days, :duration=>100, :description => 'Some cool event...'
                                                              
 Event.create! :name => "Let's play some tenis!", :max_users => 3, :place_id => Place.last.id, :owner_id => User.last.id, 
-              :event_day=>Time.new+10.days-10.minute, :duration=>5, :description => 'Hey! Who want to play some tenis? Anyone?'
+              :event_day=>Time.new+10.days-10.minute, :duration=>45, :description => 'Hey! Who want to play some tenis? Anyone?'
 
-Event.create! :name => "Let's play some basketball!", :max_users => 5, :place_id => Place.last.id, :owner_id => User.last.id, 
+Event.create! :name => "Let's play some ball!", :max_users => 5, :place_id => Place.last.id, :owner_id => User.last.id, 
               :event_day=>Time.new+33.days, :duration=>120
 
 Event.create! :name => "Let's play some basketball!", :max_users => 5, :place_id => Place.last.id, :owner_id => User.last.id, 
