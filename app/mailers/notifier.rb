@@ -10,6 +10,6 @@ class Notifier < ActionMailer::Base
     @event = event
     @user = user
 
-    mail :to=>user.email, :subject=>'Event  has chaned!'
+    mail :to=>user.email, :subject=>'Event has changed!'
   end
 end
