@@ -41,8 +41,13 @@ class EventsController < ApplicationController
   end
   
   def show
-    @event = Event.find(params[:id])
-    @event_users = @event.users
+    begin
+      @event = Event.find(params[:id])
+      @event_users = @event.users
+    rescue
+      flash[:notice] = 'No event found!'
+      redirect_to root_path    
+    end
   end
   
   def join
