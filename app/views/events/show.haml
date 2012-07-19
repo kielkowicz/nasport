@@ -5,6 +5,7 @@
     = join_or_resign_from_event_link(current_user, @event)
   - else
     = link_to 'Edit', edit_event_path(@event)
+    = link_to 'Remove', event_path(@event), :method => :delete, :confirm => "Do You really want to remove event?"
 
 %h3= "#{@event.place.address}" unless @event.place.nil?
 

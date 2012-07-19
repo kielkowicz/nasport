@@ -89,6 +89,15 @@ class EventsController < ApplicationController
       flash[:notice] = 'Był jakiś blłąd podczas usuwania => nic nie zostało usinięte.'
     end
     
-    redirect_to reports_path
+    
+    path = reports_path
+    
+    unless request.referer =~ /events/  
+      path = reports_path
+    else
+      path = root_path
+    end
+
+    redirect_to path
   end
 end
