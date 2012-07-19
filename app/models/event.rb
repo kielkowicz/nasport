@@ -67,5 +67,10 @@ class Event < ActiveRecord::Base
       
     end
   end
+  
+  public 
+  def has_free_spot?
+    users.count < max_users
+  end
 end
 
