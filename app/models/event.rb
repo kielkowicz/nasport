@@ -16,10 +16,10 @@
 #
 
 class Event < ActiveRecord::Base
-  validates :name, :presence => true 
+  validates :name, :presence => true, :length => { :minimum=>5 }
   validate :is_place_free_for_event
-  validates :max_users, :numericality => { :only_integer => true }
-  validates :duration, :numericality => {:only_integer => true }
+  validates :max_users, :numericality => { :only_integer => true, :less_then => 22 }
+  validates :duration, :numericality => {:only_integer => true, :greater_than_or_equal_to => 30, :less_than => 180}
 
   has_and_belongs_to_many :users
   belongs_to :place
