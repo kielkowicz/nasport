@@ -12,7 +12,11 @@ Nasport::Application.routes.draw do
   
   get 'reports' => 'reports#all'
   
-  resources :places
+  resources :places do
+    member do
+      get 'events/:day', :action => 'events', :as => 'events_at'
+    end
+  end
   
   devise_for :users
   

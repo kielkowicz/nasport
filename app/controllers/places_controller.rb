@@ -21,7 +21,7 @@ class PlacesController < ApplicationController
       format.json { render :json => @place }
     end
   end
-
+  
   # GET /places/new
   # GET /places/new.json
   def new
@@ -68,6 +68,10 @@ class PlacesController < ApplicationController
         format.json { render :json => @place.errors, :status => :unprocessable_entity }
       end
     end
+  end
+
+  def events
+    render :text => params[:day]  
   end
 
   # DELETE /places/1
