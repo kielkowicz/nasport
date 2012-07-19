@@ -17,7 +17,7 @@
 
 class Event < ActiveRecord::Base
   validates :name, :presence => true, :length => { :minimum=>5 }
-  validate :is_place_free_for_event
+  validate :is_place_free_for_event, :if => :should_validate_events_availability?
   validates :max_users, :numericality => { :only_integer => true, :less_then => 22 }
   validates :duration, :numericality => {:only_integer => true, :greater_than_or_equal_to => 30, :less_than => 180}
 
@@ -28,6 +28,10 @@ class Event < ActiveRecord::Base
   before_save :prepare_event_end_time
   
   attr_accessible :name, :event_day, :end_time, :description, :place_id, :owner_id, :max_users, :duration
+
+  def should_validate_events_availability?
+    place.closed
+  end
 
   def owner
     User.find(owner_id)
