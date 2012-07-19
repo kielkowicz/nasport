@@ -17,14 +17,19 @@
 
 class Event < ActiveRecord::Base
   validates :name, :presence => true, :length => { :minimum=>5 }
-  validate :is_place_free_for_event, :if => :should_validate_events_availability?
   validates :max_users, :numericality => { :only_integer => true, :less_then => 22 }
   validates :duration, :numericality => {:only_integer => true, :greater_than_or_equal_to => 30, :less_than => 180}
-
+  
+  #custom validators
+  validate :is_place_free_for_event, :if => :should_validate_events_availability?
+  validate :date_within_reason
+  
+  #relations
   has_and_belongs_to_many :users
   belongs_to :place
   has_many :reports, :dependent => :destroy
  
+  #collbacs
   before_save :prepare_event_end_time
   
   attr_accessible :name, :event_day, :end_time, :description, :place_id, :owner_id, :max_users, :duration
@@ -43,6 +48,12 @@ class Event < ActiveRecord::Base
   
   def prepare_event_end_time
     self.end_time = self.event_day+self.duration.to_i.minutes # no need to check for existance or for numericality - validation is fired before these callback
+  end
+  
+  protected
+  def date_within_reason
+    errors[:event_day] = "Event day must be within #{EVENT_DAY_MUST_BE_IN_MAX_DAYS} days  from today" unless event_day.between?(
+      Time.now, Time.now+EVENT_DAY_MUST_BE_IN_MAX_DAYS.day)
   end
 
   def is_place_free_for_event
