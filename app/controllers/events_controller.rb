@@ -26,6 +26,7 @@ class EventsController < ApplicationController
     rescue
       redirect_to root_path
     end
+    
   end
   
   def update
@@ -36,6 +37,7 @@ class EventsController < ApplicationController
         redirect_to root_path
     else
         flash[:notice] = 'Event wasn\'t updated!'
+        @places = Place.all
         render :action => :edit
     end
   end
