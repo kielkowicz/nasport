@@ -9,6 +9,9 @@
     = link_to 'My events' , mine_event_path(current_user)
 
   - if current_user && current_user.admin?
+    |
+    =link_to 'Edit city', cities_path
+    |
     = link_to 'Edit places', places_path
     |
     = link_to 'Edit disciplines', disciplines_path

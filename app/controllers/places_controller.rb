@@ -28,6 +28,7 @@ class PlacesController < ApplicationController
     only_for_admins
 
     @place = Place.new
+    @cities = City.all
 
     respond_to do |format|
       format.html # new.html.erb

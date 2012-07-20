@@ -3,7 +3,9 @@
 class EventsController < ApplicationController
   def new
     @event = current_user.events.build
-    @places = Place.all #.map { |place| [place.id, place.name] }
+    #@places = Place.all #.map { |place| [place.id, place.name] }
+    @cities = City.all
+    @places = @cities.first.places
   end
   
   def create 
@@ -13,7 +15,9 @@ class EventsController < ApplicationController
       flash[:notice] = 'Event was created!'
       redirect_to root_path
     else
-      @places = Place.all
+      #@places = Place.all
+      @cities = City.all
+      @places = @cities.first.places
       flash[:notice] = 'Even\'t wasn\'t created!'
       render :action => :new
     end
@@ -22,7 +26,10 @@ class EventsController < ApplicationController
   def edit
     begin
       @event = Event.find(params[:id])
-      @places = Place.all
+      #@places = Place.all
+      @cities = City.all
+      #@places = @cities.first.places
+      @places = @event.place.city.places
     rescue
       redirect_to root_path
     end
@@ -37,7 +44,9 @@ class EventsController < ApplicationController
         redirect_to root_path
     else
         flash[:notice] = 'Event wasn\'t updated!'
-        @places = Place.all
+        #@places = Place.all
+        @cities = City.all
+        @places = @event.place.city.places
         render :action => :edit
     end
   end

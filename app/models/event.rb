@@ -19,6 +19,7 @@ class Event < ActiveRecord::Base
   validates :name, :presence => true, :length => { :minimum=>5 }
   validates :max_users, :numericality => { :only_integer => true, :less_then => 22 }
   validates :duration, :numericality => {:only_integer => true, :greater_than_or_equal_to => 30, :less_than => 180}
+  validates :event_day, :presence => true 
   
   #custom validators
   validate :is_place_free_for_event, :if => :should_validate_events_availability?
@@ -52,8 +53,12 @@ class Event < ActiveRecord::Base
   
   protected
   def date_within_reason
+    unless event_day.nil?
     errors[:event_day] = "Event day must be within #{EVENT_DAY_MUST_BE_IN_MAX_DAYS} days  from today" unless event_day.between?(
       Time.now, Time.now+EVENT_DAY_MUST_BE_IN_MAX_DAYS.day)
+    else
+      errors[:event_day] = 'Must be presence!'
+    end
   end
 
   def is_place_free_for_event

@@ -15,6 +15,12 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  
+  <div class="field">
+    <%= f.label :city_id, 'City:' %><br />
+    <%= collection_select(:place, :city_id, @cities, :id, :name) %>
+  </div>
+  
   <div class="field">
     <%= f.label :address %><br />
     <%= f.text_field :address %>

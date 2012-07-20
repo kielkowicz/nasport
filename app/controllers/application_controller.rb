@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protected
   def only_for_admins
     unless current_user.admin?
-      flash[:notice] = 'Nie masz uprawnien do edycji'
+      flash[:notice] = 'Nie masz uprawnien do tej akcji'
       redirect_to root_path
     end
   end

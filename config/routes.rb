@@ -1,4 +1,10 @@
 Nasport::Application.routes.draw do
+  resources :cities do
+    member do
+      get 'places'
+    end
+  end
+
   resources :disciplines
   
   resources :events do

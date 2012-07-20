@@ -8,12 +8,19 @@
     = f.label :event_day, 'Event day: '
     = f.text_field :event_day, :class=>'event_datetime_picker', :value=>@event.new_record? ? '' : "#{@event.event_day.month}/#{@event.event_day.day}/#{@event.event_day.year} #{@event.event_day.time.hour <10 ? "0#{@event.event_day.time.hour}": "#{@event.event_day.time.hour}"}:#{@event.event_day.time.min < 10 ? "0#{@event.event_day.time.min}" : "#{@event.event_day.time.min}" }" 
     
-    - unless @event.errors[:event_day].empty? 
-      = link_to("Show events at #{Place.find(@event.place_id).name} on #{@event.event_day.day}/#{@event.event_day.month}/#{@event.event_day.year}", events_at_place_path(@event.place_id, @event.event_day))
+    - unless @event.errors[:event_day].empty?
+      - unless@event.event_day.nil?
+        = link_to("Show events at #{Place.find(@event.place_id).name} on #{@event.event_day.day}/#{@event.event_day.month}/#{@event.event_day.year}", events_at_place_path(@event.place_id, @event.event_day))
   %p
     = f.label :duration, 'Event duration: '
     = f.text_field :duration
     minut
+  
+  %p
+    = f.label :city_id, 'Event city: '
+    -#= collection_select(:event, :place_id, @cities, :id, :name)
+    = select(:city, :id, @cities.map {|city| [city.name, city.id]}, {:selected=> @event.new_record? ? nil : @event.place.city.id  }, :class=>'city_select' )
+  
   %p
     = f.label :place_id, 'Event place: '
     = collection_select(:event, :place_id, @places, :id, :name)
@@ -29,3 +36,20 @@
   %p
     = f.submit label
 
+:javascript
+  jQuery('.city_select').change(
+    function () {
+      $.ajax({
+        url:'#{cities_path}/'+$('.city_select').val()+'/places', 
+        dataType:'JSON', 
+        success: function (data) {
+          var options = '';
+          
+          for(var i=0; i<data.length; i++) {
+            options += '<option value='+ data[i].id +'>'+ data[i].name +'</option>';
+          }
+          jQuery('select#event_place_id').html(options);
+        }
+      });
+    }
+  )
