@@ -25,6 +25,8 @@ class PlacesController < ApplicationController
   # GET /places/new
   # GET /places/new.json
   def new
+    only_for_admins
+
     @place = Place.new
 
     respond_to do |format|
@@ -35,12 +37,16 @@ class PlacesController < ApplicationController
 
   # GET /places/1/edit
   def edit
+    only_for_admins
+
     @place = Place.find(params[:id])
   end
 
   # POST /places
   # POST /places.json
   def create
+    only_for_admins
+
     @place = Place.new(params[:place])
 
     respond_to do |format|
@@ -57,6 +63,8 @@ class PlacesController < ApplicationController
   # PUT /places/1
   # PUT /places/1.json
   def update
+    only_for_admins
+    
     @place = Place.find(params[:id])
 
     respond_to do |format|
@@ -76,7 +84,10 @@ class PlacesController < ApplicationController
 
   # DELETE /places/1
   # DELETE /places/1.json
+
   def destroy
+    only_for_admins
+
     @place = Place.find(params[:id])
     @place.destroy
 
