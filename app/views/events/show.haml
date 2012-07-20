@@ -7,7 +7,7 @@
     = link_to 'Edit', edit_event_path(@event)
     = link_to 'Remove', event_path(@event), :method => :delete, :confirm => "Do You really want to remove event?"
 
-%h3= "#{@event.place.address}" unless @event.place.nil?
+%h3= link_to(@event.place.address, place_path(@event.place)) unless @event.place.nil?
 
 %div
   %p
@@ -18,7 +18,8 @@
     %table
       - @event_users.each do |event_user|
         %tr
-          %td= event_user.email
+          %td= link_to event_user.nickname, user_profile_path(event_user)
+
     = "Zarejestrowanych  #{@event.users.count}/#{@event.max_users}"
 %div
   = link_to 'Zgłoś nadużycie', event_reports_path(@event), :method => :post
