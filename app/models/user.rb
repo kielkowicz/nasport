@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-
+  #TODO: Remove role from accessible list to protect from mess assigment!!
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :confirmed_at, 
                   :nickname, :role #after deploy/development remove role from accessible list!
