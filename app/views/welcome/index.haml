@@ -1,11 +1,29 @@
-%h1 Witaj na stronie nasport.pl!
+.simple_modal
+  .left
+    %h1 NaSport.pl
+    %p{:class=>'tagline'}
+      = "- umów się na sport!"
+  
+    %h2 Ostatnio dodane eventy:
 
-%h2 Ostatnio dodane eventy:
-
-%table
-  - @events.each do |event|
-    %tr
-      %td= link_to event.name, event_path(event)
-      %td= event.place.name unless event.place.nil?
-      %td= event.owner.nickname.nil? ? link_to(event.owner.email, user_profile_path(event.owner)) : link_to(event.owner.nickname, user_profile_path(event.owner))
-      %td= join_or_resign_from_event_link(current_user, event)
+    %table
+      -@events.each do |event|
+        %tr
+          %td= link_to event.name, event_path(event), :class=>'mine'
+          %td= event.place.name unless event.place.nil?
+          %td= event.owner.nickname.nil? ? link_to(event.owner.email, user_profile_path(event.owner), :class=>'mine') : link_to(event.owner.nickname, user_profile_path(event.owner), :class=>'mine')
+          %td= join_or_resign_from_event_link(current_user, event, :class=>'btn')
+    %br
+    = link_to 'Utwórz nowy!', new_event_path, :class=>'btn btn-primary btn-large btn-text-white'
+  .right
+    -unless user_signed_in?
+      %h3 Zaloguj się!
+      %br
+      = form_for(:user, :as => :user, :url => user_session_path) do |f|
+        = f.email_field :email, :placeholder => 'email', :class=>'span4 bigfont'
+        %br
+        = f.password_field :password, :placeholder=>'password', :class=>'span4 bigfont'
+        %br
+        = f.submit "Zaloguj", :class=>'btn btn-success btn-large'
+    -else
+      

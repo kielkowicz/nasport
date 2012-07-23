@@ -1,0 +1,106 @@
+body {
+  background: url(back.jpeg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+::selection {
+  background: #DD0017; /* Safari */
+}
+
+::-moz-selection {
+  background: #DD0017; /* Firefox */
+}
+
+body > .container {
+	padding-top: 50px;
+}
+
+.simple_modal a.mine:active {
+  color: #08C;
+}
+
+input.bigfont {
+  font-size: 1.5em;
+}
+
+a.btn-text-white {
+  color: white;
+}
+
+.simple_modal a.mine:link {
+  color: #08C;  
+}
+
+.simple_modal a.mine:hover {
+  background-color: transparent;
+  color: #005580;
+}
+
+a.mine:visited {
+  color: #08C;
+}
+
+
+.navbar a:hover.brand {
+  background-color: #DD0017;
+}
+.dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
+  background-color: #DD0017;
+}
+
+.navbar .brand {
+  color: white;
+}
+
+.simple_modal {
+  width: 850px;
+  margin: 0px  auto;
+  margin-top: 50px;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.simple_modal .left {
+  padding: 10px;
+  float: left;
+  width: 425px;
+  color: white;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.simple_modal .right {
+  padding: 10px;
+  padding-left: 460px;
+  float: none;
+  height: 307px;
+}
+
+.simple_modal .left .tagline {
+  color: #7D7D7D;
+  padding-left: 11px;
+}
+
+.simple_modal .right h3 {
+  color: white;
+}
+
+footer.main {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 40px;
+  border: none;
+}
+
+footer.main > .inner {
+  position: relative;
+  margin: 0 auto;
+  width: 600px;
+  padding-right: 10px;
+  paddin-left: 10px;
+  margin-bottom: 70px;
+  background: rgba(255, 255, 255, 0.8);
+  height: 100px;
+}

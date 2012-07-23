@@ -1,20 +1,15 @@
 !!!
 %html
   %head
-    %title Nasport
+    %title NaSport.pl
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
 
-  %body
+  %body 
     = render 'layouts/top'
+    .container
+      = yield
     
-    %p.notice
-      = notice
-    %p.alert
-      = alert
-      
-    = yield
-    
-  %footer
+  %footer.main
     = render 'layouts/footer'
