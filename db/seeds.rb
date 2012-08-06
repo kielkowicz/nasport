@@ -11,6 +11,7 @@ User.delete_all
 Place.delete_all
 Event.delete_all
 Report.delete_all
+Discipline.delete_all
 
 puts 'Populating database with fake data...'
 
@@ -32,14 +33,20 @@ Place.create! :name=>'sala gimastyczna, szkola nr 12', :address=>'gdzies', :clos
 Place.create! :name=>'sala gimastyczna, szkola nr 120 we wroclawiu', :address=>'gdzies', :closed=>true, :city_id=>c3.id
 Place.create! :name=>'Politechnika Wroclawska', :address=>'gdzies', :closed=>true, :city_id=>c3.id
 
+Discipline.create! :name=>'Piłka nożna'
+Discipline.create! :name=>'Koszykówka'
+Discipline.create! :name=>'Jazda na rowerze'
+Discipline.create! :name=>'Paintball'
+Discipline.create! :name=>'Tenis'
+
 Event.create! :name => "Let's play some football!", :max_users => 10, :place_id => Place.first.id, :owner_id => User.first.id, 
-              :event_day=>Time.new+10.days, :duration=>100, :description => 'Some cool event...'
+              :event_day=>Time.new+10.days, :duration=>100, :description => 'Some cool event...', :discipline_id => Discipline.first.id
                                                              
 Event.create! :name => "Let's play some tenis!", :max_users => 3, :place_id => Place.last.id, :owner_id => User.last.id, 
-              :event_day=>Time.new+10.days-10.minute, :duration=>45, :description => 'Hey! Who want to play some tenis? Anyone?'
+              :event_day=>Time.new+10.days-10.minute, :duration=>45, :description => 'Hey! Who want to play some tenis? Anyone?', :discipline_id=>Discipline.last.id
 
 Event.create! :name => "Let's play some ball!", :max_users => 5, :place_id => Place.last.id, :owner_id => User.last.id, 
-              :event_day=>Time.new+29.days, :duration=>120
+              :event_day=>Time.new+29.days, :duration=>120, :discipline_id=>Discipline.first.id
 
 Event.create! :name => "Let's play some basketball!", :max_users => 5, :place_id => Place.last.id, :owner_id => User.last.id, 
-              :event_day=>Time.new+10.days+50.minute, :duration=>120
+              :event_day=>Time.new+10.days+50.minute, :duration=>120, :discipline_id=>Discipline.find_by_name('Koszykówka')

@@ -29,11 +29,12 @@ class Event < ActiveRecord::Base
   has_and_belongs_to_many :users
   belongs_to :place
   has_many :reports, :dependent => :destroy
- 
+  belongs_to :discipline
+
   #collbacs
   before_save :prepare_event_end_time
   
-  attr_accessible :name, :event_day, :end_time, :description, :place_id, :owner_id, :max_users, :duration
+  attr_accessible :name, :event_day, :end_time, :description, :place_id, :owner_id, :max_users, :duration, :discipline_id
 
   def should_validate_events_availability?
     place.closed
@@ -65,11 +66,17 @@ class Event < ActiveRecord::Base
     events = Event.where(['place_id=? and event_day>?', self.place_id, Time.now-1.day])
     
     events.each do |event_other|
-      if (event_other.event_day..event_other.end_time+5.minute).overlaps?(self.event_day..self.event_day+self.duration.minute) then
-      errors.add(:event_day, 'overlaps with other event!')
-        break
+      if self.new_record?
+        if (event_other.event_day..event_other.end_time+5.minute).overlaps?(self.event_day..self.event_day+self.duration.minute) then
+        errors.add(:event_day, 'overlaps with other event!')
+          break
+        end
+      else
+        if (self.id != event_other.id) and (event_other.event_day..event_other.end_time+5.minute).overlaps?(self.event_day..self.event_day+self.duration.minute) then
+        errors.add(:event_day, 'overlaps with other event!')
+          break
+        end
       end
-      
     end
   end
   

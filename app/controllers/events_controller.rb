@@ -6,6 +6,7 @@ class EventsController < ApplicationController
     #@places = Place.all #.map { |place| [place.id, place.name] }
     @cities = City.all
     @places = @cities.first.places
+    @disciplines = Discipline.all
   end
   
   def create 
@@ -24,15 +25,16 @@ class EventsController < ApplicationController
   end
   
   def edit
-    begin
+    #begin
       @event = Event.find(params[:id])
       #@places = Place.all
       @cities = City.all
       #@places = @cities.first.places
       @places = @event.place.city.places
-    rescue
-      redirect_to root_path
-    end
+      @disciplines = Discipline.all
+   # rescue
+   #   redirect_to root_path
+   # end
     
   end
   
@@ -47,6 +49,7 @@ class EventsController < ApplicationController
         #@places = Place.all
         @cities = City.all
         @places = @event.place.city.places
+        @disciplines =Discipline.all
         render :action => :edit
     end
   end

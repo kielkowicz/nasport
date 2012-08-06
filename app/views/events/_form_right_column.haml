@@ -1,0 +1,15 @@
+%p
+  = f.label :discipline_id, 'Discipline:'
+  = collection_select(:event, :discipline_id, @disciplines, :id, :name)
+  
+%p
+  = f.label :max_users, 'Max users for that event: '
+  = f.text_field :max_users
+  
+%p
+  = f.label :description, 'Event description'
+%p
+  = f.text_area :description, :rows => 5
+
+%p
+  = f.submit label, :class=>'btn'

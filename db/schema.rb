@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120720131509) do
+ActiveRecord::Schema.define(:version => 20120806141034) do
 
   create_table "cities", :force => true do |t|
     t.string   "name"
@@ -18,18 +18,13 @@ ActiveRecord::Schema.define(:version => 20120720131509) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "disciplines", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.text     "rules"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
+# Could not dump table "disciplines" because of following StandardError
+#   Unknown type 'event_id' for column 'integer'
 
   create_table "events", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "place_id"
     t.integer  "owner_id"
     t.datetime "event_day"
@@ -37,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20120720131509) do
     t.datetime "end_time"
     t.integer  "max_users"
     t.text     "description"
+    t.integer  "discipline_id"
   end
 
   create_table "events_users", :force => true do |t|
