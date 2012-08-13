@@ -1,0 +1,38 @@
+.box
+  %h2 Edytuj konto
+
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+    = devise_error_messages!
+
+    %div
+      = f.label :nickname
+      = f.text_field :nickname
+  
+    %div
+      = f.label :email
+      = f.email_field :email
+
+    %div
+      = f.label :password
+      %i (pozostaw puste jeśli nie chcesz go zmieniać)
+      %br
+      = f.password_field :password, :autocomplete => "off"
+
+    %div
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+
+    %div
+      = f.label :current_password 
+      %i (wprowadz aktualne hasło abyt podtwierdzić zmiany)
+      %br
+      = f.password_field :current_password
+
+    %div
+      = f.submit "Aktualizuj konto", :class=>'btn'
+
+  %h3 Zamknij konto
+
+  %p
+    Chcesz zamknąć konto? 
+    = link_to "Usuń moje konto", registration_path(resource_name), :confirm => "Napewno?", :method => :delete

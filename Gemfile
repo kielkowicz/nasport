@@ -12,6 +12,8 @@ gem 'devise'
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 gem "dynamic_form"
 
+gem 'chosen-rails'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

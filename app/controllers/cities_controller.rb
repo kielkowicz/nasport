@@ -1,5 +1,5 @@
 class CitiesController < ApplicationController
-  before_filter :only_for_admins
+  before_filter :only_for_admins, :except=>[:places]
 
   # GET /cities
   # GET /cities.json
@@ -26,7 +26,7 @@ class CitiesController < ApplicationController
   def places
     @places = City.find(params[:id]).places.map {|place| {:id => place.id, :name=>place.name} }
 
-    render :json => @places
+    render :json => @places, :layout => false#, :content_type => 'application/json'
   end
   # GET /cities/new
   # GET /cities/new.json

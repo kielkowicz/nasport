@@ -9,19 +9,28 @@
   
 
 :javascript
+  jQuery(document).ready(function(){
+    $('.city_select').chosen();
+    $('.discipline_select').chosen();
+    $('#event_place_id').chosen();
+
   jQuery('.city_select').change(
     function () {
       $.ajax({
-        url:'#{cities_path}/'+$('.city_select').val()+'/places', 
-        dataType:'JSON', 
+        url:'#{cities_url}/'+$('.city_select').val()+'/places', 
+        processData: true,
+        data: {},
+        dataType:"json", 
         success: function (data) {
           var options = '';
           
           for(var i=0; i<data.length; i++) {
             options += '<option value='+ data[i].id +'>'+ data[i].name +'</option>';
           }
-          jQuery('select#event_place_id').html(options);
+          
+          jQuery('select#event_place_id').chosen().html(options).trigger("liszt:updated");
         }
       });
     }
   )
+  });

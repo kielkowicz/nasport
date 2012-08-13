@@ -1,6 +1,6 @@
 %p
   = f.label :discipline_id, 'Discipline:'
-  = collection_select(:event, :discipline_id, @disciplines, :id, :name)
+  = collection_select(:event, :discipline_id, @disciplines, :id, :name, {}, :class=>'discipline_select' )
   
 %p
   = f.label :max_users, 'Max users for that event: '

@@ -19,6 +19,7 @@ class EventsController < ApplicationController
       #@places = Place.all
       @cities = City.all
       @places = @cities.first.places
+      @disciplines = Discipline.all
       flash[:notice] = 'Even\'t wasn\'t created!'
       render :action => :new
     end
