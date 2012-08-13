@@ -1,25 +1,28 @@
-%h1 
-  = "#{@event.name}"
-  |
-  - unless @event.is_owner? current_user
-    = join_or_resign_from_event_link(current_user, @event)
-  - else
-    = link_to 'Edit', edit_event_path(@event)
-    = link_to 'Remove', event_path(@event), :method => :delete, :confirm => "Do You really want to remove event?"
+.simple_modal{:style=>'padding:20px'}
+  %h1 
+    = "#{@event.name}"
+    |
+    - unless @event.is_owner? current_user
+      = join_or_resign_from_event_link(current_user, @event)
+    - else
+      = link_to 'Edit', edit_event_path(@event)
+      = link_to 'Remove', event_path(@event), :method => :delete, :confirm => "Do You really want to remove event?"
 
-%h3= link_to(@event.place.address, place_path(@event.place)) unless @event.place.nil?
+  %h3{:style=>'padding-bottom: 10px'}= link_to(@event.place.address, place_path(@event.place)) unless @event.place.nil?
 
-%div
-  %p
-    = @event.description
-  %p
-    = "Zarejestrowani użytkownicy na event" unless @event.users.empty?
-  %p
-    %table
-      - @event_users.each do |event_user|
-        %tr
-          %td= link_to event_user.nickname, user_profile_path(event_user)
+  %div
+    %p
+      = @event.description
+    %p
+      = "Zarejestrowani użytkownicy na event" unless @event.users.empty?
+    %p
+      -unless  @event_users.count > 0 then
+        Jeszcze nikt się nie zapisał. Bądź pierwszy!
+      %table
+        - @event_users.each do |event_user|
+          %tr
+            %td= link_to event_user.nickname, user_profile_path(event_user)
 
-    = "Zarejestrowanych  #{@event.users.count}/#{@event.max_users}"
-%div
-  = link_to 'Zgłoś nadużycie', event_reports_path(@event), :method => :post
+      = "Zarejestrowanych  #{@event.users.count}/#{@event.max_users}"
+  %div{:style=>'padding-top: 50px;'}
+    = link_to 'Zgłoś nadużycie', event_reports_path(@event), :method => :post

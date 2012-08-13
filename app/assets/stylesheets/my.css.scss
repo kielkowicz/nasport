@@ -75,7 +75,7 @@ a.mine:visited {
   padding: 10px;
   padding-left: 460px;
   float: none;
-  height: 307px;
+  height: 344px;
 }
 
 .simple_modal .left .tagline {
@@ -93,6 +93,7 @@ footer.main {
   width: 100%;
   height: 40px;
   border: none;
+  z-index: -1;
 }
 
 footer.main > .inner {
