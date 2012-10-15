@@ -4,9 +4,10 @@
     %p{:class=>'tagline'}
       = "- umów się na sport!"
      
-    = link_to 'Utwórz nowy event!', new_event_path, :class=>'btn btn-primary btn-large btn-text-white', :style=>'position: absolute; top: 112px; left: 300px'
-    %h2 Ostatnio dodane eventy:
-    %table
+    = link_to 'Utwórz nowy event!', new_event_path, :class=>'btn btn-primary btn-large btn-text-white', :style=>'position: relative; top: -63px; right: -180px'
+    %h2{:style=>'position: relative; top: -40px;'}
+      Ostatnio dodane eventy:
+    %table{:style=>'position: relative; top: -40px;'}
       -@events.each do |event|
         %tr
           %td= link_to event.name, event_path(event), :class=>'mine'
