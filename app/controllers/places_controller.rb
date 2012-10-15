@@ -2,6 +2,7 @@
 class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
+
   def index
     @places = Place.all
 
@@ -41,6 +42,13 @@ class PlacesController < ApplicationController
     only_for_admins
 
     @place = Place.find(params[:id])
+    @cities = City.all
+  end
+  
+  def geocode
+    city = City.find(params[:city]).name
+    geocode = Geocoder.search("#{params[:address]}, #{city}")
+    render :json=>geocode, :layout=>false
   end
 
   # POST /places

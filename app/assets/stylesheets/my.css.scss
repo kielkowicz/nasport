@@ -18,6 +18,21 @@ body > .container {
 	padding-top: 50px;
 }
 
+table td{
+  padding: 10px;
+}
+
+.beta_sign {
+  z-index: -1;
+  position: absolute;
+  left: -80px;
+  top: -30px;
+  
+  -webkit-transform: rotate(-20deg) scale(0.5,0.5);
+  -ms-transform: rotate(-20deg) scale(0.5,0.5);
+  -moz-transform: rotate(-20deg) scale(0.5,0.5);
+  -o-transform: rotate(-20deg) scale(0.5,0.5);
+}
 .simple_modal a.mine:active {
   color: #08C;
 }
@@ -39,8 +54,38 @@ a.btn-text-white {
  color: black;
  padding:20px;
  margin-top:50px;
+
+ -moz-border-radius: 5px;
+ border-radius: 3px;
+ -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+ -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+ box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
 
+.box ::selection {
+  background: lighten(#DD0017, 25); /* Safari */
+}
+
+.box ::-moz-selection {
+  background: lighten(#DD0017,25); /* Firefox */
+}
+
+.box a.signed_user {
+  font-size: 2.0em;
+}
+
+.box a.signed_user:hover {
+  font-size: 2.0em;
+  text-decoration: none;
+}
+.box a.big_link:hover {
+  background-color: lighten(#DD0017,35);;
+  padding: 2px;
+  padding-left: 13px;
+  padding-right: 13px;
+  color: white;
+  text-decoration: none;
+}
 .simple_modal a.mine:hover {
   background-color: transparent;
   color: #005580;
@@ -49,7 +94,6 @@ a.btn-text-white {
 a.mine:visited {
   color: #08C;
 }
-
 
 .navbar a:hover.brand {
   background-color: #DD0017;
@@ -66,16 +110,32 @@ a.mine:visited {
   width: 850px;
   margin: 0px  auto;
   margin-top: 50px;
-  background-color: rgba(0,0,0,0.8);
-  color: white;
+  /*background-color: rgba(0,0,0,0.9);*/
+  
+  background-color: white;
+  color: black;
+  /*
+  padding:20px;
+  margin-top:50px;
+  */
+  -moz-border-radius: 5px;
+  border-radius: 3px;
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  /*
+    color: white;
+  */
 }
 
 .simple_modal .left {
   padding: 10px;
   float: left;
   width: 425px;
-  color: white;
-  background-color: rgba(0, 0, 0, 1);
+  /*
+    color: white;
+    background-color: rgba(0, 0, 0, 1);
+  */
 }
 
 .simple_modal .right {

@@ -3,9 +3,9 @@
     %h1 NaSport.pl
     %p{:class=>'tagline'}
       = "- umów się na sport!"
-  
+     
+    = link_to 'Utwórz nowy event!', new_event_path, :class=>'btn btn-primary btn-large btn-text-white', :style=>'position: absolute; top: 112px; left: 300px'
     %h2 Ostatnio dodane eventy:
-
     %table
       -@events.each do |event|
         %tr
@@ -14,7 +14,7 @@
           %td= event.owner.nickname.nil? ? link_to(event.owner.email, user_profile_path(event.owner), :class=>'mine') : link_to(event.owner.nickname, user_profile_path(event.owner), :class=>'mine')
           %td= join_or_resign_from_event_link(current_user, event, :class=>'btn')
     %br
-    = link_to 'Utwórz nowy!', new_event_path, :class=>'btn btn-primary btn-large btn-text-white'
+
   .right
     -unless user_signed_in?
       %h3 Zaloguj się!

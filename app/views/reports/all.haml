@@ -1,15 +1,16 @@
-%h1 Reported events:
-%table
-  %tr
-    %th= "Event name"
-    %th= "Event created by"
-    %th= "Event reported by"
-    %th= "Report"
-    %th= "Event"
-    - @reports.each do |report|
-      %tr
-        %td= link_to report.event.name, event_path(report.event)
-        %td= report.event.owner.email
-        %td= report.user.email
-        %td= link_to 'Remove', event_report_path(report.event, report), :method=>:delete, :confirm=>'Napewno chcesz usunąć raport?'
-        %td= link_to 'Remove', event_path(report.event), :method=>:delete, :confirm=>'Napewno chcesz usunąć event?'
+.box
+  %h1 Reported events:
+  %table
+    %tr
+      %th= "Event name"
+      %th= "Event created by"
+      %th= "Event reported by"
+      %th= "Report"
+      %th= "Event"
+      - @reports.each do |report|
+        %tr
+          %td= link_to report.event.name, event_path(report.event)
+          %td= report.event.owner.email
+          %td= report.user.email
+          %td= link_to 'Remove', event_report_path(report.event, report), :method=>:delete, :confirm=>'Napewno chcesz usunąć raport?'
+          %td= link_to 'Remove', event_path(report.event), :method=>:delete, :confirm=>'Napewno chcesz usunąć event?'

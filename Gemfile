@@ -13,6 +13,7 @@ gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 gem "dynamic_form"
 
 gem 'chosen-rails'
+gem 'geocoder'
 
 # Gems used only for assets and not required
 # in production environments by default.

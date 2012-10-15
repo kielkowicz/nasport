@@ -10,12 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120806141034) do
+ActiveRecord::Schema.define(:version => 20120816182422) do
 
   create_table "cities", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.float    "lat"
+    t.float    "lon"
   end
 
 # Could not dump table "disciplines" because of following StandardError

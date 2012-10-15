@@ -22,6 +22,10 @@ Nasport::Application.routes.draw do
     member do
       get 'events/:day', :action => 'events', :as => 'events_at'
     end
+    
+    collection do 
+      get 'geocode'
+    end
   end
   
   devise_for :users
