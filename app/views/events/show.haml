@@ -6,8 +6,11 @@
     - else
       = link_to 'Edit', edit_event_path(@event), :class=>'big_link'
       = link_to 'Remove', event_path(@event), :method => :delete, :confirm => "Do You really want to remove event?", :class=>'big_link'
+  
+  #map_holder{:style=>"position: relative"} 
+    #google_map{ :style => event_map_style(@event.users.count>0) }
 
-  %h3{:style=>'padding-bottom: 10px'}= link_to(@event.place.address, place_path(@event.place), :class=>'big_link') unless @event.place.nil?
+  %h3{:style=>'padding-bottom: 10px'}= link_to("#{@event.place.name}, #{@event.place.address}", place_path(@event.place), :class=>'big_link') unless @event.place.nil?
 
   %div
     %p
@@ -29,8 +32,6 @@
   %div{:style=>'padding-top: 50px;'}
     = link_to 'Zgłoś nadużycie', event_reports_path(@event), :method => :post
 
-  #map_holder{:style=>"position: relative"} 
-    #google_map{ :style => event_map_style(@event.users.count>0) }
   
 = javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=AIzaSyBuEIvDU8dcjpLBnws8FkSfD_N4LpXJnks&sensor=false"
 
