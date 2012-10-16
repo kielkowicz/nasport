@@ -16,6 +16,11 @@ class PlacesController < ApplicationController
   # GET /places/1.json
   def show
     @place = Place.find(params[:id])
+    
+    geocode = Geocoder.search("#{@place.address}, #{@place.city.name}")
+
+    @place_geometry[:lng] = geocode[0].data["geometry"]["location"]["lng"]
+    @place_geometry[:lat] = geocode[0].data["geometry"]["location"]["lat"]
 
     respond_to do |format|
       format.html # show.html.erb

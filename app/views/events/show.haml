@@ -28,3 +28,27 @@
 
   %div{:style=>'padding-top: 50px;'}
     = link_to 'Zgłoś nadużycie', event_reports_path(@event), :method => :post
+
+  #map_holder{:style=>"position: relative"} 
+    #google_map{ :style => event_map_style(@event.users.count>0) }
+  
+= javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=AIzaSyBuEIvDU8dcjpLBnws8FkSfD_N4LpXJnks&sensor=false"
+
+:javascript
+
+  $(document).ready(function() {
+    
+          var mapOptions = {
+                center: new google.maps.LatLng(#{@place_geometry[:lat]}, #{@place_geometry[:lng]} ),
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          
+          var map = new google.maps.Map(document.getElementById("google_map"), mapOptions);
+          
+          var marker = new google.maps.Marker({
+                          position: map.getCenter(),
+                          map: map,
+                          title: "hahha" //res[0].data.formatted_address
+                        });
+  });

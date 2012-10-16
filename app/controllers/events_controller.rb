@@ -59,6 +59,13 @@ class EventsController < ApplicationController
     begin
       @event = Event.find(params[:id])
       @event_users = @event.users
+      
+      @place = @event.place
+
+      geocode = Geocoder.search("#{@place.address}, #{@place.city.name}")
+      
+      @place_geometry = { :lng => geocode[0].data["geometry"]["location"]["lng"], :lat => geocode[0].data["geometry"]["location"]["lat"] }
+    
     rescue
       flash[:notice] = 'No event found!'
       redirect_to root_path    
