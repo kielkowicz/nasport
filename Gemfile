@@ -11,7 +11,7 @@ gem 'haml'
 gem 'devise'
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 gem "dynamic_form"
-
+gem 'paperclip', '~>2.7'
 gem 'chosen-rails'
 gem 'geocoder'
 
