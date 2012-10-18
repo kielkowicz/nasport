@@ -14,4 +14,16 @@
 class Place < ActiveRecord::Base
   has_many :events, :dependent => :destroy
   belongs_to :city
+  
+  has_attached_file :pix1, :styles => {:thumb => "100x100>", :big => "400x400>"}, 
+                           :content_type => { :content_type => "image/jpg" },
+                           :size => { :in => 0..100.kilobytes }
+  
+  has_attached_file :pix2, :styles => {:thumb => "100x100>", :big => "400x400>"}, 
+                           :content_type => { :content_type => "image/jpg" },
+                           :size => { :in => 0..100.kilobytes }
+  
+  has_attached_file :pix3, :styles => {:thumb => "100x100>", :big => "400x400>"}, 
+                           :content_type => { :content_type => "image/jpg" },
+                           :size => { :in => 0..100.kilobytes }
 end

@@ -9,6 +9,23 @@
   
   #map_holder{:style=>"position: relative"} 
     #google_map{ :style => event_map_style(@event.users.count>0) }
+  
+  #image_relative_tag{:style => "position: relative;"}
+    %div.pix1{:style=>"position: absolute; right: 313px; top: 11px;"}
+      - if @event.place.pix1.exists?
+        = image_modal(@event.place.pix1)
+      - else
+        = image_tag('http://placehold.it/110x75')
+    %div.pix1{:style=>"position: absolute; right: 313px; top: 103px;"}
+      - if @event.place.pix2.exists?
+        = image_modal(@event.place.pix2)
+      - else
+        = image_tag('http://placehold.it/110x75')
+    %div.pix1{:style=>"position: absolute; right: 313px; top: 195px;"}
+      - if @event.place.pix3.exists?
+        = image_modal(@event.place.pix3)
+      - else
+        = image_tag('http://placehold.it/110x75')
 
   %h3{:style=>'padding-bottom: 10px'}= link_to("#{@event.place.name}, #{@event.place.address}", place_path(@event.place), :class=>'big_link') unless @event.place.nil?
 
@@ -19,7 +36,9 @@
       = "Oni się już zapisali:" unless @event.users.empty?
     %p
       -unless  @event_users.count > 0 then
-        Jeszcze nikt się nie zapisał. Bądź pierwszy!
+        %div{:style=>"padding-bottom: 50px;"}
+          Jeszcze nikt się nie zapisał. Bądź pierwszy!
+
       %table
         - @event_users.each do |event_user|
           %tr{:style=>'padding-bottom: 20px'}
@@ -38,7 +57,7 @@
 :javascript
 
   $(document).ready(function() {
-    
+
           var mapOptions = {
                 center: new google.maps.LatLng(#{@place_geometry[:lat]}, #{@place_geometry[:lng]} ),
                 zoom: 15,

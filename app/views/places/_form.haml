@@ -1,5 +1,5 @@
 .span4
-  = form_for(@place) do |f|
+  = form_for( @place, :html => { :multipart => true } ) do |f|
     - if @place.errors.any?
       #error_explanation
         %h2
@@ -28,13 +28,21 @@
     %p
       = f.check_box :closed 
       = f.label :closed, :style=>'display: inline'
-
+    %p
+      = f.label :pix1, 'Picture 1:'
+      = f.file_field :pix1
+    %p
+      = f.label :pix1, 'Picture 2:'
+      = f.file_field :pix2
+    %p
+      = f.label :pix1, 'Picture 3:'
+      = f.file_field :pix3
   
     %p
       = f.submit :class=>'btn'
 
-.span7{:style=>'height: 440px'}
-  #google_map{:style=>"width:100%; height:100%"}
+.span7{:style=>'height: 840px'}
+  #google_map{:style=>"width:300px; height:300px"}
 = javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=AIzaSyBuEIvDU8dcjpLBnws8FkSfD_N4LpXJnks&sensor=false"
   
 

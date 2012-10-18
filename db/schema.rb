@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120816182422) do
+ActiveRecord::Schema.define(:version => 20121018114348) do
 
   create_table "cities", :force => true do |t|
     t.string   "name"
@@ -46,10 +47,22 @@ ActiveRecord::Schema.define(:version => 20120816182422) do
     t.string   "name"
     t.string   "address"
     t.text     "description"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.boolean  "closed",      :default => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.boolean  "closed",            :default => false
     t.integer  "city_id"
+    t.string   "pix1_file_name"
+    t.string   "pix1_content_type"
+    t.integer  "pix1_file_size"
+    t.datetime "pix1_updated_at"
+    t.string   "pix2_file_name"
+    t.string   "pix2_content_type"
+    t.integer  "pix2_file_size"
+    t.datetime "pix2_updated_at"
+    t.string   "pix3_file_name"
+    t.string   "pix3_content_type"
+    t.integer  "pix3_file_size"
+    t.datetime "pix3_updated_at"
   end
 
   create_table "reports", :force => true do |t|
