@@ -4,27 +4,29 @@
     %p{:class=>'tagline'}
       = "- umów się na sport!"
      
-    = link_to 'Utwórz nowy event!', new_event_path, :class=>'btn btn-primary btn-large btn-text-white', :style=>'position: relative; top: -63px; right: -180px'
+    = link_to 'Utwórz nowy event!', new_event_path, :class=>'btn btn-large', :style=>'position: relative; top: -63px; right: -250px'
     %h2{:style=>'position: relative; top: -40px;'}
       Ostatnio dodane eventy:
     %table{:style=>'position: relative; top: -40px;'}
       -@events.each do |event|
         %tr
           %td= link_to event.name, event_path(event), :class=>'mine'
-          %td= event.place.name unless event.place.nil?
+          %td= link_to(event.place.name, place_path(event.place)) unless event.place.nil?
           %td= event.owner.nickname.nil? ? link_to(event.owner.email, user_profile_path(event.owner), :class=>'mine') : link_to(event.owner.nickname, user_profile_path(event.owner), :class=>'mine')
           %td= join_or_resign_from_event_link(current_user, event, :class=>'btn')
     %br
 
   .right
     -unless user_signed_in?
-      %h3 Zaloguj się!
+
+      %h3
+        Zaloguj się!
       %br
       = form_for(:user, :as => :user, :url => user_session_path) do |f|
         = f.email_field :email, :placeholder => 'email', :class=>'span4 bigfont'
         %br
         = f.password_field :password, :placeholder=>'password', :class=>'span4 bigfont'
         %br
-        = f.submit "Zaloguj", :class=>'btn btn-success btn-large'
+        = f.submit "Zaloguj się", :class=>'btn btn-large pull-right', :style=>'margin-right: 80px;'
     -else
       

@@ -1,18 +1,20 @@
 .box
-  %h1 Moje eventy!
+  %h1 Moje eventy
 
-  %div{:style=>'padding-top: 20px;'} 
-    %h4 Utworzone przezemnie:
+  - unless @mine_events[:owner].blank?
+    %div{:style=>'padding-top: 20px;'} 
+      %h4 Utworzone przeze mnie:
   
-    %table
-      - @mine_events[:owner].each do |event|
-        %tr
-          %td= link_to event.name, event_path(event)
+      %table
+        - @mine_events[:owner].each do |event|
+          %tr
+            %td= link_to event.name, event_path(event)
+  
+  - unless @mine_events[:participant].blank?
+    %div{:style=>'padding-top: 20px;'}
+      %h4 W tych biorę udział:
 
-  %div{:style=>'padding-top: 20px;'}
-    %h4 w których biorę udział
-
-    %table  
-      - @mine_events[:participant].each do |event|
-        %tr
-          %td= link_to event.name, event_path(event)
+      %table  
+        - @mine_events[:participant].each do |event|
+          %tr
+            %td= link_to event.name, event_path(event)

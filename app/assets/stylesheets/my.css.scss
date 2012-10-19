@@ -4,6 +4,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  color: black;
 }
 
 ::selection {
@@ -136,6 +137,7 @@ a.mine:visited {
     color: white;
     background-color: rgba(0, 0, 0, 1);
   */
+  color: black;
 }
 
 .simple_modal .right {
@@ -143,6 +145,7 @@ a.mine:visited {
   padding-left: 460px;
   float: none;
   height: 344px;
+  color: black;
 }
 
 .simple_modal .left .tagline {
@@ -151,7 +154,8 @@ a.mine:visited {
 }
 
 .simple_modal .right h3 {
-  color: white;
+  color: black;
+  font-size: 1.8em;
 }
 
 footer.main {
