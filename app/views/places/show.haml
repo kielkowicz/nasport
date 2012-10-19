@@ -1,0 +1,51 @@
+.box
+  %h1= @place.name
+
+  #map_holder{:style=>"position: relative"} 
+    #google_map{ :style => event_map_style(true) }
+  
+  #image_relative_tag{:style => "position: relative;"}
+    %div.pix1{:style=>"position: absolute; right: 313px; top: 11px;"}
+      - if @place.pix1.exists?
+        = image_modal(@place.pix1)
+      - else
+        = image_tag('http://placehold.it/110x75')
+    %div.pix1{:style=>"position: absolute; right: 313px; top: 103px;"}
+      - if @place.pix2.exists?
+        = image_modal(@place.pix2)
+      - else
+        = image_tag('http://placehold.it/110x75')
+    %div.pix1{:style=>"position: absolute; right: 313px; top: 195px;"}
+      - if @place.pix3.exists?
+        = image_modal(@place.pix3)
+      - else
+        = image_tag('http://placehold.it/110x75')
+  %br
+  %div{:style=>'height: 300px'}
+    %p
+      = @place.description
+    %p
+      raing...
+    %p
+      comments...
+    %p
+      events planned here...
+= javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=AIzaSyBuEIvDU8dcjpLBnws8FkSfD_N4LpXJnks&sensor=false"
+
+:javascript
+  $(document).ready(function() {
+          var mapOptions = {
+                center: new google.maps.LatLng(#{@place_geometry[:lat]}, #{@place_geometry[:lng]} ),
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          
+          var map = new google.maps.Map(document.getElementById("google_map"), mapOptions);
+          
+          var marker = new google.maps.Marker({
+                          position: map.getCenter(),
+                          map: map,
+                          title: "hahha" //res[0].data.formatted_address
+                        });
+  });
+
