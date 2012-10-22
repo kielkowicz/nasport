@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+  
+  %body
+    %h1
+      Witaj 
+      = @resource.email
+      !
+
+    %p
+      Podtwierdzić email klikając na link poniżej:
+
+    %p
+      = link_to 'Podtwierdzić moje konto', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
