@@ -2,6 +2,8 @@
   $(function() {
     $('.event_datetime_picker').datetimepicker({
       stepMinute: 10, 
+      dateFormat: 'dd/mm/yy',
+      timeFormat: 'hh:mm',
       minDate: new Date(),
       maxDate: #{EVENT_DAY_MUST_BE_IN_MAX_DAYS}
      });
