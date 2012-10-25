@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+  %body
+    %h1 
+      Hej 
+      = @user.email
+      !
+    %p
+      Event na który się zapisałeś, 
+      = @event.name
+      = ", jest już jutro!"
+    = render 'foot_note'

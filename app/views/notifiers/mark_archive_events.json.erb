@@ -1,0 +1,7 @@
+{
+  "status":"<%= @status %>" <%= "," if @status =="ok" %>
+
+  <% if @status=="ok" %>
+  "updated_records":"<%= @updated %>"
+  <% end %>
+}

@@ -79,8 +79,13 @@ class Event < ActiveRecord::Base
       end
     end
   end
-  
+ 
   public 
+  #eg. event.within? 1.day
+  def within? time
+    self.event_day.year == Time.now.year && self.event_day.month == Time.now.month && ( (self.event_day-time).day==Time.now.day )
+  end
+  
   def has_free_spot?
     users.count < max_users
   end

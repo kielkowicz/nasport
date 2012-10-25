@@ -18,6 +18,10 @@ Nasport::Application.routes.draw do
   
   get 'reports' => 'reports#all'
   
+  get 'update_archive' => 'notifiers#mark_archive_events', :defaults => { :format=>:json }
+  get 'notifie' => 'notifiers#find_in_one_day'
+  get 'send_reminder' => 'notifiers#send_reminder', :defaults => {:format=>:json}
+
   resources :places do
     member do
       get 'events/:day', :action => 'events', :as => 'events_at'
