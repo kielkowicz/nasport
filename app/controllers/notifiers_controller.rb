@@ -1,5 +1,7 @@
 class NotifiersController < ApplicationController
   respond_to :json 
+  skip_before_filter :authenticate_user!
+  http_basic_authenticate_with :name => 'prog', :password => 'prog_access'
 
   def mark_archive_events
     begin
@@ -39,9 +41,7 @@ class NotifiersController < ApplicationController
            @events_users.append user.email
            Notifier.event_in_one_day(user, event).deliver
         end
-        
-    #    event.reminded = true
-    #    event.save
+        event.update_column :reminded, true
       end
     end
 
