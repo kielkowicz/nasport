@@ -27,4 +27,8 @@ module EventsHelper
 EOS
    out.html_safe 
   end
+  
+  def event_day_helper event_day
+    "#{event_day.day}/#{event_day.month}/#{event_day.year} #{event_day.hour}:#{event_day.min}".html_safe
+  end
 end

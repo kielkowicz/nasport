@@ -27,7 +27,9 @@
       - else
         = image_tag('http://placehold.it/110x75')
 
-  %h3{:style=>'padding-bottom: 10px'}= link_to("#{@event.place.name}, #{@event.place.address}", place_path(@event.place), :class=>'big_link') unless @event.place.nil?
+  %h3{:style=>'padding-bottom: 10px'}
+    = event_day_helper @event.event_day
+    = link_to("#{@event.place.name}, #{@event.place.address}", place_path(@event.place), :class=>'big_link') unless @event.place.nil?
 
   %div
     %p
