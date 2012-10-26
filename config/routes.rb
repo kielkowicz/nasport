@@ -13,6 +13,11 @@ Nasport::Application.routes.draw do
       get 'resign'
       get 'mine'
     end
+
+    collection do
+      get 'search'
+    end
+
     resources :reports
   end
   

@@ -177,3 +177,8 @@ footer.main > .inner {
   background: rgba(255, 255, 255, 0.8);
   height: 100px;
 }
+
+.navbar .nav > li > a:hover.links_navbar {
+  background-color: white;
+  color: black;
+}
