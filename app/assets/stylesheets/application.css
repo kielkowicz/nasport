@@ -9,5 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require  ui-lightness/jquery-ui-1.8.20.custom
+ *= require bootstrap
+ *= require chosen
+ *= require jquery-ui-timepicker-addon
+
  *= require_tree .
 */

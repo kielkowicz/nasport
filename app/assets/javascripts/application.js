@@ -12,4 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require bootstrap
+//= require chosen.jquery.min
+//= require jquery-ui-sliderAccess
+//= require jquery-ui-timepicker-addon
 //= require_tree .

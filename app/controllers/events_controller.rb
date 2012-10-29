@@ -127,4 +127,13 @@ class EventsController < ApplicationController
 
     redirect_to path
   end
+  
+  def search
+    if request.xhr? 
+     render :text => 'ok' 
+    else
+    
+    end
+
+  end
 end

@@ -4,13 +4,15 @@
     %title NaSport.pl
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
-    = #javascript_include_tag "jquery.lightbox-0.5.min"
+    = yield(:head)
     = csrf_meta_tags
 
   %body 
     = render 'layouts/top'
     = image_tag 'beta.gif',:class=>'beta_sign'
     .container
+      .black_box
+        = yield(:black_box)
       = yield
     
   %footer.main

@@ -1,0 +1,33 @@
+- content_for(:black_box) do
+  %h1
+    Szukaj
+    %br
+    spotkania
+
+.box
+  %div 
+    = form_tag search_events_path, :remote => true, :method => :get, :id => 'search_form' do 
+      = label_tag :search, 'Look for: '
+      = text_field_tag :search 
+      = submit_tag 'Search', :class=>'btn'
+  
+  #search_result
+
+:javascript
+  $(document).ready(function () {
+    function on_ajax_success(evt, resp, status, xhr) {
+      console.log('evt:');
+      console.log(evt);
+
+      console.log('resp:');
+      console.log(resp);
+
+      console.log('status:');
+      console.log(status);
+
+      console.log('xhr:');
+      console.log(xhr);
+    }
+
+    $('#search_form').bind('ajax:success', function() {console.log('ha!')});
+  });
