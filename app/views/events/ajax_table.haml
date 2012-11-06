@@ -1,0 +1,7 @@
+%table.table
+  - @events.each do |event|
+    %tr
+      %td=link_to event.name, event_path(event)
+      %td=link_to event.place.name, place_path(event.place)
+      %td=event.place.city.name
+      %td="#{event.event_day.day}/#{event.event_day.month}"

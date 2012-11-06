@@ -129,8 +129,17 @@ class EventsController < ApplicationController
   end
   
   def search
-    if request.xhr? 
-     render :text => 'ok' 
+    @cities = City.all
+    @disciplines = Discipline.all
+
+    if request.xhr?
+      @city =City.find(params[:city][:id])
+      
+      @places_id = @city.places.map(&:id)
+
+
+      @events = Event.where('place_id in (?) and discipline_id=? and archive = ? ', @places_id, params[:discipline][:id], false)
+      render 'ajax_table', :layout => false
     else
     
     end
