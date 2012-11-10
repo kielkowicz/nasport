@@ -21,8 +21,13 @@ ActiveRecord::Schema.define(:version => 20121022173143) do
     t.float    "lon"
   end
 
-# Could not dump table "disciplines" because of following StandardError
-#   Unknown type 'event_id' for column 'integer'
+  create_table "disciplines", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "rules"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "events", :force => true do |t|
     t.string   "name"
